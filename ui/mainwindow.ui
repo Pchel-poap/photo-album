@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Фотоальбом</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="leftPanel" native="true">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="labelAlbums">
+          <property name="text">
+           <string>Альбомы</string>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTreeWidget" name="albumTree">
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::CustomContextMenu</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>Название</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="rightPanel" native="true">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="searchLayout">
+          <item>
+           <widget class="QLineEdit" name="searchEdit">
+            <property name="placeholderText">
+             <string>Поиск...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="searchTypeCombo">
+            <item>
+             <property name="text">
+              <string>По описанию</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>По тегам</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>По дате</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="searchButton">
+            <property name="text">
+             <string>Найти</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="timelineButton">
+            <property name="text">
+             <string>Хронология</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelPhotos">
+          <property name="text">
+           <string>Фотографии</string>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="photoList">
+          <property name="viewMode">
+           <enum>QListView::IconMode</enum>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>150</width>
+            <height>150</height>
+           </size>
+          </property>
+          <property name="gridSize">
+           <size>
+            <width>170</width>
+            <height>190</height>
+           </size>
+          </property>
+          <property name="resizeMode">
+           <enum>QListView::Adjust</enum>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::CustomContextMenu</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="actionAddPhoto"/>
+    <addaction name="separator"/>
+    <addaction name="actionImportAlbum"/>
+    <addaction name="actionExportAlbum"/>
+    <addaction name="separator"/>
+    <addaction name="actionSwitchUser"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuAlbum">
+    <property name="title">
+     <string>Альбом</string>
+    </property>
+    <addaction name="actionCreateAlbum"/>
+    <addaction name="actionCreateSubAlbum"/>
+    <addaction name="separator"/>
+    <addaction name="actionEditAlbum"/>
+    <addaction name="actionDeleteAlbum"/>
+   </widget>
+   <widget class="QMenu" name="menuTags">
+    <property name="title">
+     <string>Теги</string>
+    </property>
+    <addaction name="actionManageTags"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuAlbum"/>
+   <addaction name="menuTags"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>Панель инструментов</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <addaction name="actionAddPhoto"/>
+   <addaction name="actionCreateAlbum"/>
+  </widget>
+  <action name="actionAddPhoto">
+   <property name="text">
+    <string>Добавить фото</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionImportAlbum">
+   <property name="text">
+    <string>Импорт альбома...</string>
+   </property>
+  </action>
+  <action name="actionExportAlbum">
+   <property name="text">
+    <string>Экспорт альбома...</string>
+   </property>
+  </action>
+  <action name="actionSwitchUser">
+   <property name="text">
+    <string>Сменить пользователя</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionCreateAlbum">
+   <property name="text">
+    <string>Создать альбом</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+N</string>
+   </property>
+  </action>
+  <action name="actionCreateSubAlbum">
+   <property name="text">
+    <string>Создать подальбом</string>
+   </property>
+  </action>
+  <action name="actionEditAlbum">
+   <property name="text">
+    <string>Редактировать альбом</string>
+   </property>
+  </action>
+  <action name="actionDeleteAlbum">
+   <property name="text">
+    <string>Удалить альбом</string>
+   </property>
+  </action>
+  <action name="actionManageTags">
+   <property name="text">
+    <string>Управление тегами</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
